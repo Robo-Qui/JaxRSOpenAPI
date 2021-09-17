@@ -1,8 +1,6 @@
-package jpa.dao;
+package fr.istic.taa.jaxrs.dao;
 
-import jpa.business.Compte;
-import jpa.business.Utilisateur;
-
+import fr.istic.taa.jaxrs.business.Compte;
 import javax.persistence.NoResultException;
 
 public class CompteManager extends GenericManager<Compte, Long>{

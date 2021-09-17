@@ -1,6 +1,6 @@
-package jpa.dao;
+package fr.istic.taa.jaxrs.dao;
 
-import jpa.business.Intitule;
+import fr.istic.taa.jaxrs.business.Intitule;
 
 public class IntituleManager extends GenericManager<Intitule, Long> {
 

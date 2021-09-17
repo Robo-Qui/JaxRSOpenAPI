@@ -1,11 +1,9 @@
-package jpa.dao;
+package fr.istic.taa.jaxrs.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 
 import javax.persistence.EntityManager;
-
-import jpa.EntityManagerHelper;
 
 public abstract class GenericManager<T, PK extends Serializable>
         implements IGenericManager<T, PK> {

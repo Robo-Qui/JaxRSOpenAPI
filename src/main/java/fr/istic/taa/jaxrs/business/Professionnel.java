@@ -1,7 +1,8 @@
-package jpa.business;
+package fr.istic.taa.jaxrs.business;
+
+import fr.istic.taa.jaxrs.business.FreeSlot;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.List;

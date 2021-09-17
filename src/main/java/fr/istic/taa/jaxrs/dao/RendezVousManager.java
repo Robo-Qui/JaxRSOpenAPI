@@ -1,6 +1,6 @@
-package jpa.dao;
+package fr.istic.taa.jaxrs.dao;
 
-import jpa.business.RendezVous;
+import fr.istic.taa.jaxrs.business.RendezVous;
 
 public class RendezVousManager extends GenericManager<RendezVous,Long> {
 

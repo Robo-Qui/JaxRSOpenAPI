@@ -1,4 +1,4 @@
-package jpa.business;
+package fr.istic.taa.jaxrs.business;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
