@@ -13,6 +13,11 @@ public class Compte implements Serializable {
 
     }
 
+    public Compte(String login, String password){
+        this.login = login;
+        this.password = password;
+    }
+
     public Compte(Long id, String login, String password) {
         this.id = id;
         this.login = login;
