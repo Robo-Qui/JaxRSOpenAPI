@@ -4,36 +4,47 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.domain.Utilisateur;
-import fr.istic.taa.jaxrs.dto.CompteDto;
-import fr.istic.taa.jaxrs.dto.UtilisateurDto;
+import fr.istic.taa.jpa.dao.*;
+import fr.istic.taa.jpa.services.*;
 import io.swagger.v3.oas.annotations.Parameter;
 
-@Path("/compte")
+@Path("/utilisateur")
 @Produces({"application/json", "application/xml"})
 public class UtilisateurRessource {
 
-    private UtilisateurDto dto = new UtilisateurDto();
+    private UtilisateurService service = new UtilisateurService(new UtilisateurManager(new CompteManager()), new ProfessionnelService(new ProfessionnelManager(new CompteManager()), new FreeSlotService(new FreeSlotManager()), new RdvInfosService(new RdvInfosManager(), new IntituleService(new IntituleManager()))), new RendezVousService(new RendezVousManager()));
 
     @GET
-    @Path("/{CompteId}")
+    @Path("/id/{CompteId}")
     public Response getUtilisateurById(@PathParam("CompteId") Long compteId)  {
-        Utilisateur result = dto.getUtilisateurById(compteId);
-        if(result != null){
-            return Response.ok().entity(result).build();
-        }
-        else{
+        fr.istic.taa.jpa.business.Utilisateur ret = service.getById(compteId);
+        if(ret == null){
             return Response.status(404).build();
         }
+        Utilisateur result = new Utilisateur(ret.getId(),ret.getLogin(),ret.getPassword());
+        return Response.ok().entity(result).build();
+    }
+
+    @GET
+    @Path("/login/{CompteLogin}")
+    public Response getUtilisateurByLogin(@PathParam("CompteLogin") String login)  {
+        fr.istic.taa.jpa.business.Utilisateur ret = service.getByLogin(login);
+        if(ret == null){
+            return Response.status(404).build();
+        }
+        Utilisateur result = new Utilisateur(ret.getId(),ret.getLogin(),ret.getPassword());
+        return Response.ok().entity(result).build();
     }
 
     @POST
     @Path("/add")
     @Consumes("application/json")
-    public Response addUtilisateur(@Parameter(required = true) Utilisateur util){
-        Utilisateur result = dto.addUtilisateur(util);
-        if(result==null){
+    public Response addUtilisateur(@Parameter(required = true) Utilisateur util) throws Exception {
+        fr.istic.taa.jpa.business.Utilisateur ret = service.addUtilisateur(new fr.istic.taa.jpa.business.Utilisateur(util.getLogin(), util.getPassword()));
+        if(ret==null){
             return Response.status(400).build();
         }
+        Utilisateur result = new Utilisateur(ret.getId(),ret.getLogin(),ret.getPassword());
         return Response.ok().entity(result).build();
     }
 }

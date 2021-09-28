@@ -1,4 +1,4 @@
-package fr.istic.taa.jaxrs.business;
+package fr.istic.taa.jpa.business;
 
 import javax.persistence.Entity;
 

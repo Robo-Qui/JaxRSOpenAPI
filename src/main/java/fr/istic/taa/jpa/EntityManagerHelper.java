@@ -1,4 +1,4 @@
-package fr.istic.taa.jaxrs.dao;
+package fr.istic.taa.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 public class EntityManagerHelper {
 
-    private static final EntityManagerFactory emf;
+    private static final EntityManagerFactory emf; 
     private static final ThreadLocal<EntityManager> threadLocal;
 
     static {
@@ -46,5 +46,5 @@ public class EntityManagerHelper {
 
     public static void commit() {
         getEntityManager().getTransaction().commit();
-    }
+    } 
 }

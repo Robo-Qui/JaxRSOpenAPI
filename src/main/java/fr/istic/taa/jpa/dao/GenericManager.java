@@ -1,9 +1,10 @@
-package fr.istic.taa.jaxrs.dao;
+package fr.istic.taa.jpa.dao;
 
-import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
+import fr.istic.taa.jpa.EntityManagerHelper;
 
 import javax.persistence.EntityManager;
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 
 public abstract class GenericManager<T, PK extends Serializable>
         implements IGenericManager<T, PK> {
