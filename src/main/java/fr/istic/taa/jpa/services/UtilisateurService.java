@@ -8,7 +8,7 @@ import fr.istic.taa.jpa.dao.UtilisateurManager;
 
 public class UtilisateurService {
     private UtilisateurManager manager;
-    private ProfessionnelService profService;
+    public ProfessionnelService profService;
     private RendezVousService rdvService;
 
     public UtilisateurService(UtilisateurManager manager, ProfessionnelService profService, RendezVousService rdvService){
